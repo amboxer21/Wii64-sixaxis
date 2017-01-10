@@ -18,7 +18,7 @@
 > make -f Makefile.GX_gfx_wii
 
 <dl>
-  <dt>*Note:*</dt>
+  <dt>Note:</dt>
     <dd>For above make command, you can pass any make file to make. There are a few others in this dir. Use the -d switch to get verbose output.</dd>
   <dt>Example:</dt>
 </dl>
