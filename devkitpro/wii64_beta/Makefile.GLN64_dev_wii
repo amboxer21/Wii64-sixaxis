@@ -12,14 +12,14 @@ CFLAGS  = -g -O2 -Wall $(MACHDEP) $(INCLUDE) \
 	  -DTHREADED_AUDIO -DUSE_RECOMP_CACHE -DPPC_DYNAREC -DFASTMEM -DRELEASE #-DSHOW_DEBUG -DUSE_EXPANSION
 #	  -DDEBUGON -DUSE_ROM_CACHE_L1 -DPRINTGECKO -DGLN64_SDLOG -DEMBEDDED_FONTS -DUSE_EXPANSION -DPPC_DYNAREC -DSHOW_STATS
 
-MACHDEP	= -DEABI -mcpu=750 -meabi -mhard-float 
+MACHDEP	= -DEABI -mcpu=750 -meabi -mhard-float
 #LDFLAGS	=	$(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map -Wl,--cref
-LDFLAGS	=	$(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map,--cref,--verbose #-lz
+LDFLAGS	=	$(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map,--cref,--verbose
 
 #INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPRO)/libfat/libogc/include -I/usr/include -I$(DEVKITPPC)/powerpc-eabi/include
-INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPPC)/powerpc-eabi/include -I/opt/devkitpro/libz/include -I/opt/devkitpro/wii64_beta/main
+INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPPC)/powerpc-eabi/include -I$(DEVKITPRO)/libz/include -I$(DEVKITPRO)/wii64_beta/main -I$(DEVKITPRO)/wii64_beta/r4300/ppc
 #LIBPATHS = -L$(DEVKITPRO)/libogc/lib/wii -L$(DEVKITPRO)/libfat/libogc/lib/wii -L/opt/devkitpro/libz/lib 
-LIBPATHS = -L$(DEVKITPRO)/libogc/lib/wii -L$(DEVKITPRO)/libogc/lib/cube -L/opt/devkitpro/libz/lib 
+LIBPATHS = -L$(DEVKITPRO)/libogc/lib/wii -L$(DEVKITPRO)/libogc/lib/cube -L$(DEVKITPRO)/libz/lib 
 
 CXXFLAGS = $(CFLAGS)
 
