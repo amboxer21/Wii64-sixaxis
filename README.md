@@ -13,7 +13,7 @@
     <dd>CC=powerpc-eabi-gcc ./configure --prefix=/opt/wii64-sixaxis/devkitpro/libz/</dd>
     
   <dt>To compile:</dt>  
-    <dd>Go into the *devkitpro/wii64_beta/* directory and run:</dd>
+  <dd>Go into the <b>devkitpro/wii64_beta/</b> directory and run:</dd>
 </dl>
 > make -f Makefile.GX_gfx_wii
 
