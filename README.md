@@ -12,6 +12,7 @@ export DEVKITPPC="/opt/wii64-sixaxis/devkitpro/devkitPPC"
 export PATH="$PATH:/opt/wii64-sixaxis/devkitpro/devkitPPC/bin"
 
 
+
 zlib must be cross compied with ppc and linked in the make file in order for this to compile properly:
 
 CC=powerpc-eabi-gcc ./configure --prefix=/opt/wii64-sixaxis/devkitpro/libz/
