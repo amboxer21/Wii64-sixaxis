@@ -4,8 +4,10 @@
 
 #ifndef INVALID_CODE_H
 #define INVALID_CODE_H
-
-int inline invalid_code_get(int block_num);
-void inline invalid_code_set(int block_num, int value);
+ 
+////unsigned long invalid_code_get(unsigned long block_num, int val);
+// Void inline is the original
+void invalid_code_set(int block_num, int value);
+////unsigned long invalid_code_set(unsigned long block_num, int val, int value);
 
 #endif

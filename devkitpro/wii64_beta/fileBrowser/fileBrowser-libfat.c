@@ -200,6 +200,7 @@ int fileBrowser_libfat_readDir(fileBrowser_file* file, fileBrowser_file** dir){
 	int num_entries = 2, i = 0;
 	*dir = malloc( num_entries * sizeof(fileBrowser_file) );
 	// Read each entry of the directory
+	////while( dirnext(dp, filename, &fstat) == 0 ){
 	while( dirnext(dp, filename, &fstat) == 0 ){
 		// Make sure we have room for this one
 		if(i == num_entries){

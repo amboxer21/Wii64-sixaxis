@@ -90,9 +90,14 @@ void (*code)();
 #ifdef PPC_DYNAREC
 #define check_memory() invalid_code_set(address>>12, 1);
 #else
-#define check_memory() \
+/*#define check_memory() \
    if (!invalid_code_get(address>>12)) \
        if (blocks[address>>12]->block[(address&0xFFF)/4].ops != NOTCOMPILED) \
+	 invalid_code_set(address>>12, 1);
+#endif*/
+#define check_memory()
+   if (!invalid_code_get(address>>12)) {
+       if (blocks[address>>12]->block[(address&0xFFF)/4].ops != NOTCOMPILED) {
 	 invalid_code_set(address>>12, 1);
 #endif
 
@@ -959,7 +964,8 @@ void SB()
    address = lsaddr;
    byte = (unsigned char)(lsrt & 0xFF);
    write_byte_in_memory();
-   check_memory();
+   ////check_memory();
+   invalid_code_set(address>>12, 1);
 }
 
 void SH()

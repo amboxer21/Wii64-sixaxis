@@ -59,7 +59,7 @@ extern unsigned long *tlb_LUT_r;
 extern unsigned long *tlb_LUT_w;
 void tlb_mem2_init();
 #endif
-unsigned long virtual_to_physical_address(unsigned long addresse, int w);
+unsigned long virtual_to_physical_address(unsigned long address, int w);
 int probe_nop(unsigned long address);
 
 #endif

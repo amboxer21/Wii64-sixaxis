@@ -4,7 +4,7 @@ CC		=powerpc-eabi-gcc
 CXX		=powerpc-eabi-g++ 
 AS		=powerpc-eabi-as
 
-CFLAGS  = -g -O2 -Wall $(MACHDEP) $(INCLUDE) \
+CFLAGS  = -g -O2 -Wall $(MACHDEP) $(INCLUDE) -Wextra -pedantic -std=c99 \
 	  -DCPU_SHUTDOWN -DSPC700_SHUTDOWN -DVAR_CYCLES -DSOUND \
 	  -DNOASM -DNGC -DNOASM -DPIXEL_FORMAT=RGB565  \
 	  -fno-exceptions -Wno-unused-parameter -pipe \
@@ -17,7 +17,7 @@ MACHDEP	= -DEABI -mcpu=750 -meabi -mhard-float
 LDFLAGS	=	$(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map,--cref,--verbose
 
 #INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPRO)/libfat/libogc/include -I/usr/include -I$(DEVKITPPC)/powerpc-eabi/include
-INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPPC)/powerpc-eabi/include -I$(DEVKITPRO)/libz/include -I$(DEVKITPRO)/wii64_beta/main -I$(DEVKITPRO)/wii64_beta/r4300/ppc
+INCLUDE = -I$(DEVKITPRO)/libogc/include -I$(DEVKITPPC)/powerpc-eabi/include -I$(DEVKITPRO)/libz/include -I$(DEVKITPRO)/wii64_beta/main -I$(DEVKITPRO)/wii64_beta/r4300/ppc -I$(DEVKITPRO)/wii64_beta/r4300
 #LIBPATHS = -L$(DEVKITPRO)/libogc/lib/wii -L$(DEVKITPRO)/libfat/libogc/lib/wii -L/opt/devkitpro/libz/lib 
 LIBPATHS = -L$(DEVKITPRO)/libogc/lib/wii -L$(DEVKITPRO)/libogc/lib/cube -L$(DEVKITPRO)/libz/lib 
 

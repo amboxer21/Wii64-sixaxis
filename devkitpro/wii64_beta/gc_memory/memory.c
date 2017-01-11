@@ -88,6 +88,9 @@ unsigned char *PIF_RAMb = (unsigned char *)(PIF_RAM);
 
 // address : address of the read/write operation being done
 unsigned long address = 0;
+unsigned long invalid_code_get(unsigned long block_num, int val) {
+	block_num>>val;
+}
 // *address_low = the lower 16 bit of the address :
 #ifdef _BIG_ENDIAN
 static unsigned short *address_low = (unsigned short *)(&address)+1; 
@@ -1001,7 +1004,7 @@ void read_nomemd()
 
 void write_nomem()
 {
-   if (!interpcore && !invalid_code_get(address>>12))
+   if (!interpcore && !invalid_code_get(address,12))
      //if (blocks[address>>12]->code_addr[(address&0xFFF)/4])
        invalid_code_set(address>>12, 1);
    address = virtual_to_physical_address(address,1);
@@ -1011,7 +1014,7 @@ void write_nomem()
 
 void write_nomemb()
 {
-   if (!interpcore && !invalid_code_get(address>>12))
+   if (!interpcore && !invalid_code_get(address,12))
      //if (blocks[address>>12]->code_addr[(address&0xFFF)/4])
        invalid_code_set(address>>12, 1);
    address = virtual_to_physical_address(address,1);
@@ -1021,7 +1024,7 @@ void write_nomemb()
 
 void write_nomemh()
 {
-   if (!interpcore && !invalid_code_get(address>>12))
+   if (!interpcore && !invalid_code_get(address,12))
      //if (blocks[address>>12]->code_addr[(address&0xFFF)/4])
        invalid_code_set(address>>12, 1);
    address = virtual_to_physical_address(address,1);
@@ -1031,7 +1034,7 @@ void write_nomemh()
 
 void write_nomemd()
 {
-   if (!interpcore && !invalid_code_get(address>>12))
+   if (!interpcore && !invalid_code_get(address,12))
      //if (blocks[address>>12]->code_addr[(address&0xFFF)/4])
        invalid_code_set(address>>12, 1);
    address = virtual_to_physical_address(address,1);
