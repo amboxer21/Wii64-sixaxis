@@ -22,18 +22,22 @@
 
 #include <stdlib.h>
 #include "../../gui/DEBUG.h"
-#include "../Invalid_Code.h"
+#include <Invalid_Code.h>
+//#include "../Invalid_Code.h"
 #include "../../gc_memory/memory.h"
 #include "../interupt.h"
 #include "../r4300.h"
 #include "../Recomp-Cache.h"
-#include "Recompile.h"
-#include "Wrappers.h"
+//#include "Recompile.h"
+#include <Recompile.h>
+//#include "Wrappers.h"
+#include <Wrappers.h>
 
 extern int stop;
 extern unsigned long instructionCount;
 extern void (*interp_ops[64])(void);
-inline unsigned long update_invalid_addr(unsigned long addr);
+////inline unsigned long update_invalid_addr(unsigned long addr);
+unsigned long update_invalid_addr(unsigned int);
 unsigned int dyna_check_cop1_unusable(unsigned int, int);
 unsigned int dyna_mem(unsigned int, unsigned int, memType, unsigned int, int);
 
@@ -92,11 +96,15 @@ inline unsigned int dyna_run(unsigned int (*code)(void)){
 	return naddr;
 }
 
+unsigned long paddr;
 void dynarec(unsigned int address){
 	while(!stop){
 		start_section(TRAMP_SECTION);
 		PowerPC_block* dst_block = blocks[address>>12];
-		unsigned long paddr = update_invalid_addr(address);
+		//unsigned long paddr = update_invalid_addr(addr);
+		unsigned long update_invalid_addr(unsigned int addr) {
+			paddr = addr;
+		}
 		/*
 		sprintf(txtbuffer, "trampolining to 0x%08x\n", address);
 		DEBUG_print(txtbuffer, DBG_USBGECKO);

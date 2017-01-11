@@ -23,7 +23,8 @@
 #ifndef WRAPPERS_H
 #define WRAPPERS_H
 
-#include "Recompile.h"
+////#include "Recompile.h"
+#include <Recompile.h>
 
 #define DYNAREG_REG    14
 #define DYNAREG_COP0   15
@@ -38,9 +39,10 @@
 #define DYNAOFF_LR     20
 
 extern long long int reg[34]; // game's registers
+//inline unsigned long update_invalid_addr(unsigned int addr);
 extern float*  reg_cop1_simple[32]; // 32-bit fprs
 extern double* reg_cop1_double[32]; // 64-bit fprs
-
+ 
 extern int noCheckInterrupt;
 
 typedef enum { MEM_LW,   MEM_LH,   MEM_LB,   MEM_LD,
@@ -51,6 +53,7 @@ typedef enum { MEM_LW,   MEM_LH,   MEM_LB,   MEM_LD,
 
 unsigned int decodeNInterpret(MIPS_instr, unsigned int, int);
 int dyna_update_count(unsigned int pc);
+unsigned long update_invalid_addr(unsigned int addr);
 unsigned int dyna_check_cop1_unusable(unsigned int pc, int isDelaySlot);
 unsigned int dyna_mem(unsigned int value, unsigned int addr,
                       memType type, unsigned int pc, int isDelaySlot);
