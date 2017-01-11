@@ -185,23 +185,33 @@ void InitRemovalThread()
 #endif
 }
 
+char filename[MAXPATHLEN];
+unsigned char dirnext(const char* dp, const char* filename, const char* fstat) {
+  if(!dp) {
+		return FILE_BROWSER_ERROR;
+	}
+	
+	return 0;
+}
 
 int fileBrowser_libfat_readDir(fileBrowser_file* file, fileBrowser_file** dir){
   
   pauseRemovalThread();
 	
-  //DIR_ITER* dp = diropen( file->name );
-  DIR_ITER *dp = opendir( file->name );
+  ////DIR_ITER* dp = diropen( file->name );
+  DIR_ITER* dp = opendir(file->name);
 	if(!dp) return FILE_BROWSER_ERROR;
 	struct stat fstat;
 	
 	// Set everything up to read
-	char filename[MAXPATHLEN];
+	////char filename[MAXPATHLEN];
 	int num_entries = 2, i = 0;
 	*dir = malloc( num_entries * sizeof(fileBrowser_file) );
 	// Read each entry of the directory
 	////while( dirnext(dp, filename, &fstat) == 0 ){
-	while( dirnext(dp, filename, &fstat) == 0 ){
+	////const char* dn = dirnext(dp, filename, &fstat);
+	while(dirnext(dp, filename, &fstat) == 0 ){
+	////while(dn == 0){
 		// Make sure we have room for this one
 		if(i == num_entries){
 			++num_entries;
